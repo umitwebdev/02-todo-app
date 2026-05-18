@@ -28,7 +28,8 @@ function zeigeAufgaben() {
     let html = "";
 
     for (let i = 0; i < aufgaben.length; i++) {
-    html += "<li>" + aufgaben[i].text + "<button class='loeschen-button' onclick='loescheAufgabe(" + i + ")'>X</button></li>";
+    let stil = aufgaben[i].erledigt ? "text-decoration: line-through; opacity: 0.5;" : "";
+html += "<li style='" + stil + "'>" + aufgaben[i].text + " <button onclick='toggleAufgabe(" + i + ")'>✓</button>" + " <button class='loeschen-button' onclick='loescheAufgabe(" + i + ")'>X</button></li>";
     }
 
     liste.innerHTML = html;
@@ -37,5 +38,16 @@ function zeigeAufgaben() {
 function loescheAufgabe(i) {
     aufgaben.splice(i, 1);
     zeigeAufgaben();
+    localStorage.setItem("aufgaben", JSON.stringify(aufgaben));
 
+}
+
+function toggleAufgabe(i) {
+    if (aufgaben[i].erledigt === false) {
+        aufgaben[i].erledigt = true;
+    } else {
+        aufgaben[i].erledigt = false;
+    }
+    zeigeAufgaben();
+    localStorage.setItem("aufgaben", JSON.stringify(aufgaben));
 }
