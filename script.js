@@ -1,5 +1,13 @@
 let aufgaben = [];
 
+let gespeichert = localStorage.getItem("aufgaben");
+
+if (gespeichert !== null) {
+    aufgaben = JSON.parse(gespeichert);
+    zeigeAufgaben();
+}
+
+
 let hinzufuegenButton = document.querySelector("#hinzufuegen-button");
 hinzufuegenButton.addEventListener("click", aufgabeHinzufuegen);
 
@@ -12,6 +20,7 @@ function aufgabeHinzufuegen() {
     eingabe.value = "";
     aufgaben.push(text);
     zeigeAufgaben();
+    localStorage.setItem("aufgaben", JSON.stringify(aufgaben));
 }
 
 function zeigeAufgaben() {
