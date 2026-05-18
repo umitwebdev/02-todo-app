@@ -6,15 +6,27 @@ hinzufuegenButton.addEventListener("click", aufgabeHinzufuegen);
 function aufgabeHinzufuegen() {
     let eingabe = document.querySelector("#eingabe");
     let text = eingabe.value;
+    if (text === "") {
+        return;
+    }
+    eingabe.value = "";
     aufgaben.push(text);
     zeigeAufgaben();
 }
 
 function zeigeAufgaben() {
     let liste = document.querySelector("#todo-liste");
-    liste.innerHTML = "";
+    let html = "";
 
     for (let i = 0; i < aufgaben.length; i++) {
-        liste.innerHTML += "<li>" + aufgaben[i] + "</li>";
+        html += "<li>" + aufgaben[i] + "<button onclick='loescheAufgabe(" + i + ")'>X</button></li>";
     }
+
+    liste.innerHTML = html;
+}
+
+function loescheAufgabe(i) {
+    aufgaben.splice(i, 1);
+    zeigeAufgaben();
+    
 }
