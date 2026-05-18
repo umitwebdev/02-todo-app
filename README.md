@@ -2,16 +2,19 @@
 
 Todo-App mit dynamischer Liste.
 
-**Live:** coming soon
+**Live:** [umitwebdev.github.io/02-todo-app](https://umitwebdev.github.io/02-todo-app)
 
 ## Features
 - Aufgaben hinzufügen via Eingabefeld
-- Liste wird dynamisch per DOM aktualisiert
+- Leere Eingaben werden abgefangen
+- Aufgaben einzeln löschen
+- Eingabefeld leert sich automatisch nach Eingabe
+- Liste wird dynamisch per DOM aktualisiert (kein Page Reload)
 
 ## Tech-Stack
 - HTML5
 - CSS3
-- Vanilla JavaScript (Arrays, DOM-Manipulation)
+- Vanilla JavaScript (Arrays, DOM-Manipulation, splice, push)
 
 ## Setup
 git clone https://github.com/umitwebdev/02-todo-app.git
