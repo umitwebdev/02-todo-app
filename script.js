@@ -19,7 +19,7 @@ function zeigeAufgaben() {
     let html = "";
 
     for (let i = 0; i < aufgaben.length; i++) {
-        html += "<li>" + aufgaben[i] + "<button onclick='loescheAufgabe(" + i + ")'>X</button></li>";
+    html += "<li>" + aufgaben[i] + "<button class='loeschen-button' onclick='loescheAufgabe(" + i + ")'>X</button></li>";
     }
 
     liste.innerHTML = html;
@@ -28,5 +28,5 @@ function zeigeAufgaben() {
 function loescheAufgabe(i) {
     aufgaben.splice(i, 1);
     zeigeAufgaben();
-    
+
 }

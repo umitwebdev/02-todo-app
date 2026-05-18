@@ -10,10 +10,11 @@ Todo-App mit dynamischer Liste.
 - Aufgaben einzeln löschen
 - Eingabefeld leert sich automatisch nach Eingabe
 - Liste wird dynamisch per DOM aktualisiert (kein Page Reload)
+- CSS Styling: Card-Layout, lila Header, Input, Button, Listeneinträge
 
 ## Tech-Stack
 - HTML5
-- CSS3
+- CSS3 (Flexbox, Card-Layout, Pseudo-Selektoren)
 - Vanilla JavaScript (Arrays, DOM-Manipulation, splice, push)
 
 ## Setup
