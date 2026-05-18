@@ -18,7 +18,7 @@ function aufgabeHinzufuegen() {
         return;
     }
     eingabe.value = "";
-    aufgaben.push(text);
+    aufgaben.push({text: text, erledigt: false});
     zeigeAufgaben();
     localStorage.setItem("aufgaben", JSON.stringify(aufgaben));
 }
@@ -28,7 +28,7 @@ function zeigeAufgaben() {
     let html = "";
 
     for (let i = 0; i < aufgaben.length; i++) {
-    html += "<li>" + aufgaben[i] + "<button class='loeschen-button' onclick='loescheAufgabe(" + i + ")'>X</button></li>";
+    html += "<li>" + aufgaben[i].text + "<button class='loeschen-button' onclick='loescheAufgabe(" + i + ")'>X</button></li>";
     }
 
     liste.innerHTML = html;
