@@ -7,9 +7,15 @@ if (gespeichert !== null) {
     zeigeAufgaben();
 }
 
-
 let hinzufuegenButton = document.querySelector("#hinzufuegen-button");
 hinzufuegenButton.addEventListener("click", aufgabeHinzufuegen);
+
+let eingabefeld = document.querySelector("#eingabe");
+eingabefeld.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        aufgabeHinzufuegen();
+    }
+});
 
 function aufgabeHinzufuegen() {
     let eingabe = document.querySelector("#eingabe");
@@ -41,12 +47,10 @@ function zeigeAufgaben() {
     liste.innerHTML = html;
 }
 
-
 function loescheAufgabe(i) {
     aufgaben.splice(i, 1);
     zeigeAufgaben();
     localStorage.setItem("aufgaben", JSON.stringify(aufgaben));
-
 }
 
 function toggleAufgabe(i) {
