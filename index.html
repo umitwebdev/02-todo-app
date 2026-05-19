@@ -18,6 +18,11 @@
       <div class="card-body">
         <input id="eingabe" type="text" placeholder="Neue Aufgabe...">
         <button id="hinzufuegen-button">Hinzufügen</button>
+        <div id="filter-buttons">
+          <button onclick="setFilter('alle')">Alle</button>
+          <button onclick="setFilter('offen')">Offen</button>
+          <button onclick="setFilter('erledigt')">Erledigt</button>
+        </div>
         <ul id="todo-liste"></ul>
       </div>
 

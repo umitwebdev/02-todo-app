@@ -168,3 +168,8 @@ li:hover {
     text-align: center;
     margin-top: 2rem;
 }
+
+#filter-buttons button.aktiv {
+    background: #4f46e5;
+    color: white;
+}

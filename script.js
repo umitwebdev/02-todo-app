@@ -1,4 +1,5 @@
 let aufgaben = [];
+let aktivFilter = "alle";
 let bearbeitungsIndex = -1;
 
 let gespeichert = localStorage.getItem("aufgaben");
@@ -30,6 +31,8 @@ function aufgabeHinzufuegen() {
     localStorage.setItem("aufgaben", JSON.stringify(aufgaben));
 }
 
+
+
 function zeigeAufgaben() {
     let liste = document.querySelector("#todo-liste");
     let html = "";
@@ -38,6 +41,14 @@ function zeigeAufgaben() {
         html = "<p class='leer-nachricht'>Füge deine erste Aufgabe hinzu.</p>";
     } else {
         for (let i = 0; i < aufgaben.length; i++) {
+
+            if (aktivFilter === "offen" && aufgaben[i].erledigt === true) {
+                continue;
+            }
+            if (aktivFilter === "erledigt" && aufgaben[i].erledigt === false) {
+                continue;
+            }
+
             if (i === bearbeitungsIndex) {
                 html += `<li>
                     <input id="edit-feld" type="text" value="${aufgaben[i].text}">
@@ -93,3 +104,23 @@ document.addEventListener("keydown", function(event) {
         speichereAufgabe(bearbeitungsIndex);
     }
 });
+
+function setFilter(filter) {
+    aktivFilter = filter;
+    zeigeAufgaben();
+}
+
+function setFilter(filter) {
+    aktivFilter = filter;
+
+    let buttons = document.querySelectorAll("#filter-buttons button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("aktiv");
+    }
+
+    if (filter === "alle") buttons[0].classList.add("aktiv");
+    if (filter === "offen") buttons[1].classList.add("aktiv");
+    if (filter === "erledigt") buttons[2].classList.add("aktiv");
+
+    zeigeAufgaben();
+}
