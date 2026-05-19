@@ -1,4 +1,5 @@
 let aufgaben = [];
+let bearbeitungsIndex = -1;
 
 let gespeichert = localStorage.getItem("aufgaben");
 
@@ -34,14 +35,25 @@ function zeigeAufgaben() {
     let html = "";
 
     for (let i = 0; i < aufgaben.length; i++) {
-        let stil = aufgaben[i].erledigt ? "text-decoration: line-through; opacity: 0.5;" : "";
-        html += `<li>
-            <span class="aufgabe-text" style="${stil}">${aufgaben[i].text}</span>
-            <div class="aufgabe-buttons">
-                <button onclick="toggleAufgabe(${i})">✓</button>
-                <button class="loeschen-button" onclick="loescheAufgabe(${i})">X</button>
-            </div>
-        </li>`;
+
+        if (i === bearbeitungsIndex) {
+            html += `<li>
+                <input id="edit-feld" type="text" value="${aufgaben[i].text}">
+                <div class="aufgabe-buttons">
+                    <button onclick="speichereAufgabe(${i})">✅</button>
+                </div>
+            </li>`;
+        } else {
+            let stil = aufgaben[i].erledigt ? "text-decoration: line-through; opacity: 0.5;" : "";
+            html += `<li>
+                <span class="aufgabe-text" style="${stil}">${aufgaben[i].text}</span>
+                <div class="aufgabe-buttons">
+                    <button onclick="bearbeiteAufgabe(${i})">✏️</button>
+                    <button onclick="toggleAufgabe(${i})">✓</button>
+                    <button class="loeschen-button" onclick="loescheAufgabe(${i})">X</button>
+                </div>
+            </li>`;
+        }
     }
 
     liste.innerHTML = html;
@@ -62,3 +74,20 @@ function toggleAufgabe(i) {
     zeigeAufgaben();
     localStorage.setItem("aufgaben", JSON.stringify(aufgaben));
 }
+function bearbeiteAufgabe(i) {
+    bearbeitungsIndex = i;
+    zeigeAufgaben();
+}
+
+function speichereAufgabe(i) {
+    let editFeld = document.querySelector("#edit-feld");
+    aufgaben[i].text = editFeld.value;
+    bearbeitungsIndex = -1;
+    zeigeAufgaben();
+    localStorage.setItem("aufgaben", JSON.stringify(aufgaben));
+}
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter" && bearbeitungsIndex !== -1) {
+        speichereAufgabe(bearbeitungsIndex);
+    }
+});

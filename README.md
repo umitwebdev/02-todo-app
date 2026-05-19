@@ -5,6 +5,7 @@ Moderne Todo-App mit Dark Mode und Mobile-First Design.
 **Live:** [umitwebdev.github.io/02-todo-app](https://umitwebdev.github.io/02-todo-app)
 
 ## Features
+- - Aufgaben inline bearbeiten (✏️ Edit-Button oder Enter-Taste)
 - Aufgaben hinzufügen via Eingabefeld oder Enter-Taste
 - Leere Eingaben werden abgefangen
 - Aufgaben einzeln löschen
