@@ -34,31 +34,33 @@ function zeigeAufgaben() {
     let liste = document.querySelector("#todo-liste");
     let html = "";
 
-    for (let i = 0; i < aufgaben.length; i++) {
-
-        if (i === bearbeitungsIndex) {
-            html += `<li>
-                <input id="edit-feld" type="text" value="${aufgaben[i].text}">
-                <div class="aufgabe-buttons">
-                    <button onclick="speichereAufgabe(${i})">✅</button>
-                </div>
-            </li>`;
-        } else {
-            let stil = aufgaben[i].erledigt ? "text-decoration: line-through; opacity: 0.5;" : "";
-            html += `<li>
-                <span class="aufgabe-text" style="${stil}">${aufgaben[i].text}</span>
-                <div class="aufgabe-buttons">
-                    <button onclick="bearbeiteAufgabe(${i})">✏️</button>
-                    <button onclick="toggleAufgabe(${i})">✓</button>
-                    <button class="loeschen-button" onclick="loescheAufgabe(${i})">X</button>
-                </div>
-            </li>`;
+    if (aufgaben.length === 0) {
+        html = "<p class='leer-nachricht'>Füge deine erste Aufgabe hinzu.</p>";
+    } else {
+        for (let i = 0; i < aufgaben.length; i++) {
+            if (i === bearbeitungsIndex) {
+                html += `<li>
+                    <input id="edit-feld" type="text" value="${aufgaben[i].text}">
+                    <div class="aufgabe-buttons">
+                        <button onclick="speichereAufgabe(${i})">✅</button>
+                    </div>
+                </li>`;
+            } else {
+                let stil = aufgaben[i].erledigt ? "text-decoration: line-through; opacity: 0.5;" : "";
+                html += `<li>
+                    <span class="aufgabe-text" style="${stil}">${aufgaben[i].text}</span>
+                    <div class="aufgabe-buttons">
+                        <button onclick="bearbeiteAufgabe(${i})">✏️</button>
+                        <button onclick="toggleAufgabe(${i})">✓</button>
+                        <button class="loeschen-button" onclick="loescheAufgabe(${i})">X</button>
+                    </div>
+                </li>`;
+            }
         }
     }
 
     liste.innerHTML = html;
 }
-
 function loescheAufgabe(i) {
     aufgaben.splice(i, 1);
     zeigeAufgaben();

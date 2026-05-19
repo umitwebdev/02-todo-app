@@ -163,4 +163,8 @@ li:hover {
   color: #f87171 !important;
 }
 
-
+.leer-nachricht {
+    color: #888;
+    text-align: center;
+    margin-top: 2rem;
+}
