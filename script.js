@@ -28,12 +28,19 @@ function zeigeAufgaben() {
     let html = "";
 
     for (let i = 0; i < aufgaben.length; i++) {
-    let stil = aufgaben[i].erledigt ? "text-decoration: line-through; opacity: 0.5;" : "";
-html += "<li style='" + stil + "'>" + aufgaben[i].text + " <button onclick='toggleAufgabe(" + i + ")'>✓</button>" + " <button class='loeschen-button' onclick='loescheAufgabe(" + i + ")'>X</button></li>";
+        let stil = aufgaben[i].erledigt ? "text-decoration: line-through; opacity: 0.5;" : "";
+        html += `<li>
+            <span class="aufgabe-text" style="${stil}">${aufgaben[i].text}</span>
+            <div class="aufgabe-buttons">
+                <button onclick="toggleAufgabe(${i})">✓</button>
+                <button class="loeschen-button" onclick="loescheAufgabe(${i})">X</button>
+            </div>
+        </li>`;
     }
 
     liste.innerHTML = html;
 }
+
 
 function loescheAufgabe(i) {
     aufgaben.splice(i, 1);
