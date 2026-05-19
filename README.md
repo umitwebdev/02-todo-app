@@ -1,24 +1,22 @@
 # 02-todo-app
 
-Todo-App mit dynamischer Liste und Persistenz.
+Moderne Todo-App mit Dark Mode und Mobile-First Design.
 
 **Live:** [umitwebdev.github.io/02-todo-app](https://umitwebdev.github.io/02-todo-app)
 
 ## Features
-- Aufgaben hinzufügen via Eingabefeld
+- Aufgaben hinzufügen via Eingabefeld oder Enter-Taste
 - Leere Eingaben werden abgefangen
 - Aufgaben einzeln löschen
 - Aufgaben als erledigt markieren mit Strike-through (Toggle)
-- Eingabefeld leert sich automatisch nach Eingabe
-- Liste wird dynamisch per DOM aktualisiert (kein Page Reload)
-- Vollständige LocalStorage-Persistenz – Aufgaben, gelöschte Einträge und erledigt-Status überleben F5
-- CSS Styling: Card-Layout, lila Header, Input, Button, Listeneinträge
-- Responsive Grundlage (viewport meta-Tag)
+- Dark Mode Design
+- Mobile-optimiert (responsive, Media Queries)
+- Vollständige LocalStorage-Persistenz – Aufgaben, gelöschter Status und erledigt-Status überleben F5
 
 ## Tech-Stack
 - HTML5
-- CSS3 (Flexbox, Card-Layout, Pseudo-Selektoren)
-- Vanilla JavaScript (Arrays, Objekte, DOM-Manipulation, splice, push, ternärer Operator)
+- CSS3 (Flexbox, Dark Mode, Media Queries)
+- Vanilla JavaScript (Arrays, Objekte, DOM-Manipulation, Template Literals, Ternary Operator)
 - LocalStorage, JSON.stringify / JSON.parse
 
 ## Setup
